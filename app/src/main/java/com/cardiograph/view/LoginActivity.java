@@ -218,7 +218,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private void login(){
 		if (isInputValid()) {
 			IMEUtil.hideIme(this);
-			startLogin();
+//			startLogin();
+			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("userName", phone);
+			startActivity(intent);
+			recordUserName();
+			finish();
 		}
 	}
 
