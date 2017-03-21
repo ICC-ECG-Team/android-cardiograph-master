@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.cardiograph"
+    package="com.icc.cardiograph"
     android:versionCode="1"
     android:versionName="1.0" >
 <!-- installLocation有三个值可以选择：internalOnly、auto、preferExternal
@@ -27,12 +27,13 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <application
+        android:name=".base.ApplicationEx"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name="com.cardiograph.view.MainActivity"
+            android:name=".mvp.view.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden"
@@ -43,7 +44,7 @@
             </intent-filter> -->
         </activity>
         <activity 
-            android:name="com.cardiograph.view.LoginActivity"
+            android:name=".mvp.view.LoginActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -53,33 +54,33 @@
             </intent-filter>
         </activity>
         <activity 
-            android:name="com.cardiograph.view.RegisterActivity"
+            android:name=".mvp.view.RegisterActivity"
             android:screenOrientation="landscape">
         </activity>
                 <activity 
-            android:name="com.cardiograph.view.UpdateActivity"
+            android:name=".mvp.view.UpdateActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity 
-            android:name="com.cardiograph.view.UserManagerActivity"
+            android:name=".mvp.view.UserManagerActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity 
-            android:name="com.cardiograph.view.HelpActivity"
+            android:name=".mvp.view.HelpActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity 
-            android:name="com.cardiograph.view.HistoryActivity"
+            android:name=".mvp.view.HistoryActivity"
             android:screenOrientation="landscape">
         </activity>
         <activity
-            android:name="com.cardiograph.view.BLEActivity"
+            android:name=".mvp.view.BLEActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="stateHidden"
             android:configChanges="keyboardHidden|screenSize">
         </activity>
-        <activity android:name="com.cardiograph.view.DeviceListActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Dialog"/>
-        <service android:enabled="true" android:name="com.cardiograph.service.UartService" />
+        <activity android:name=".mvp.view.DeviceListActivity" android:label="@string/app_name" android:theme="@android:style/Theme.Dialog"/>
+        <service android:enabled="true" android:name="com.icc.cardiograph.service.UartService" />
     </application>
 
 </manifest>
