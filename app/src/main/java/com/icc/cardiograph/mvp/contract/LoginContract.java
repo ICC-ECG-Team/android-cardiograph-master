@@ -19,7 +19,7 @@ public interface LoginContract {
     }
 
     interface Model extends BaseModel {
-        void login(Activity context, String username, String password, OnLoginListener onLoginListenner);
+        void login(Activity context, String username, String password, OnLoginListener onLoginListener);
     }
 
     abstract class Presenter extends BasePresenter<Model, View> {
