@@ -8,7 +8,7 @@ import com.icc.cardiograph.base.BaseView;
 
 /**
  * 登录契约类
- * Created by z2wenfa on 2016/9/1.
+ * Created by yejinxin on 2016/9/1.
  */
 public interface LoginContract {
 
