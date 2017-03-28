@@ -22,7 +22,7 @@ public interface UserApi {
     @POST
     @FormUrlEncoded
     Observable<LoginEntity> login(@Url String url,
-                                                      @Field("action") String action,
-                                                      @Field("username") String username,
-                                                      @Field("password") String password);
+                                  @Field("action") String action,
+                                  @Field("username") String username,
+                                  @Field("password") String password);
 }

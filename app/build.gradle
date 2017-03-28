@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+//apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -13,6 +14,10 @@ android {
         ndk {
             moduleName "JNI_Interface"
         }
+
+//        jackOptions {
+//            enabled true
+//        }
     }
 
     sourceSets {
@@ -66,6 +71,21 @@ android {
     }
 
     useLibrary 'org.apache.http.legacy'
+//    compileOptions {
+//        //使用JAVA8语法解析
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+//    }
+
+//    retrolambda {
+//        //指定将源码编译的级别，使用下列代码，会将代码编译到兼容1.6的字节码格式
+//        javaVersion JavaVersion.VERSION_1_6
+//    }
+
+    //解决dagger2和butterknife冲突
+//    packagingOptions {
+//        exclude 'META-INF/services/javax.annotation.processing.Processor'
+//    }
 }
 
 dependencies {
@@ -84,9 +104,7 @@ dependencies {
     /*rxjava+rxandroid*/
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.2.1'
-
-    compile 'com.jakewharton:butterknife:8.2.1'
-    compile 'org.apache.httpcomponents:httpcore:4.4.4'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.icc.cardiograph.util.rxbus.RxManager;
 
+import rx.subscriptions.CompositeSubscription;
+
 /**
  * T-MVP Presenter基类
  */
@@ -12,6 +14,7 @@ public abstract class BasePresenter<M, T> {
     public M mModel;
     public T mView;
     public RxManager mRxManager = new RxManager();
+    protected CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     public void setVM(T v, M m) {
         this.mView = v;
@@ -24,5 +27,6 @@ public abstract class BasePresenter<M, T> {
 
     public void onDestroy() {
         mRxManager.clear();
+        mCompositeSubscription.unsubscribe();
     }
 }

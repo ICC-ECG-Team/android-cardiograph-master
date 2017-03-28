@@ -12,6 +12,7 @@ import com.icc.cardiograph.mvp.contract.LoginContract;
 import com.icc.cardiograph.util.IMEUtil;
 import com.icc.cardiograph.util.Util;
 
+import rx.Observable;
 import rx.Subscriber;
 
 /**
@@ -34,6 +35,15 @@ public class LoginModel implements LoginContract.Model {
 //			recordUserName();
 //			finish();
         }
+    }
+
+    @Override
+    public Observable<LoginEntity> login(Activity context, String username, String password) {
+        if (isInputValid(context, username, password)) {
+            IMEUtil.hideIme(context);
+            return UserApiImpl.getInstance().login(BuildConfig.URL_SERVER, "auth", username, password);
+        }
+        return null;
     }
 
     private boolean isInputValid(Activity context, String phone, String password) {// 输入检查

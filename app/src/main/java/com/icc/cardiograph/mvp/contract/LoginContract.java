@@ -5,6 +5,9 @@ import android.app.Activity;
 import com.icc.cardiograph.base.BaseModel;
 import com.icc.cardiograph.base.BasePresenter;
 import com.icc.cardiograph.base.BaseView;
+import com.icc.cardiograph.entity.LoginEntity;
+
+import rx.Observable;
 
 /**
  * 登录契约类
@@ -20,6 +23,7 @@ public interface LoginContract {
 
     interface Model extends BaseModel {
         void login(Activity context, String username, String password, OnLoginListener onLoginListener);
+        Observable<LoginEntity> login(Activity context, String username, String password);
     }
 
     abstract class Presenter extends BasePresenter<Model, View> {

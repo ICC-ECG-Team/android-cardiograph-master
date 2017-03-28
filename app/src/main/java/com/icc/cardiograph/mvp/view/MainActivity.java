@@ -123,9 +123,10 @@ public class MainActivity extends Activity {
 	public static int dataNum = 406;
 	public static String dataDateTime;
 	private int data;
-/*    static{
-    	System.loadLibrary("JNI_Interface");
-    }*/
+	/*    static{
+            System.loadLibrary("JNI_Interface");
+        }*/
+	private boolean isBind;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -443,7 +444,7 @@ public class MainActivity extends Activity {
 	//服务初始化
 	private void service_init(){
 		Intent bindIntent = new Intent(this, UartService.class);
-		bindService(bindIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
+		isBind = bindService(bindIntent, mServiceConnection, Context.BIND_AUTO_CREATE);
 
 		LocalBroadcastManager.getInstance(this).registerReceiver(UARTStatusChangeReceiver, makeGattUpdateIntentFilter());
 	}
@@ -655,14 +656,19 @@ public class MainActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onStop();
 		tvConnect.setText(R.string.ble_connect);
-        try {
-        	LocalBroadcastManager.getInstance(this).unregisterReceiver(UARTStatusChangeReceiver);
-        } catch (Exception ignore) {
-            Log.e(TAG, ignore.toString());
-        }
-        unbindService(mServiceConnection);
-        mService.stopSelf();
-        mService= null;
+		try {
+			LocalBroadcastManager.getInstance(this).unregisterReceiver(UARTStatusChangeReceiver);
+		} catch (Exception ignore) {
+			Log.e(TAG, ignore.toString());
+		}
+		if(isBind){
+			unbindService(mServiceConnection);
+			isBind = false;
+		}
+		if(mService != null){
+			mService.stopSelf();
+			mService= null;
+		}
 	}
 	@Override
 	public void onDestroy() {
@@ -674,9 +680,14 @@ public class MainActivity extends Activity {
 		} catch (Exception ignore) {
 			Log.e(TAG, ignore.toString());
 		}
-		unbindService(mServiceConnection);
-		mService.stopSelf();
-		mService= null;
+		if(isBind){
+			unbindService(mServiceConnection);
+			isBind = false;
+		}
+		if(mService != null){
+			mService.stopSelf();
+			mService= null;
+		}
 		unregisterReceiver(batteryReceiver);
 		System.exit(0);
 	}

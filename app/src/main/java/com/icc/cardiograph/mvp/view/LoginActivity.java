@@ -103,14 +103,15 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 		if(!TextUtils.isEmpty(sp.getString("key_time", ""))){
 			key_time = Long.parseLong(sp.getString("key_time", ""));
 		}
-		if(System.currentTimeMillis() - key_time < 72*3600*1000){//72小时
-			Intent intent = new Intent(this, MainActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			intent.putExtra("userName", phone);
-			startActivity(intent);
-			recordUserName();
-			finish();
-		}
+//		if(System.currentTimeMillis() - key_time < 72*3600*1000){//72小时
+//			Intent intent = new Intent(this, MainActivity.class);
+//			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//			intent.putExtra("userName", phone);
+//			startActivity(intent);
+//			recordUserName();
+//			finish();
+//		}
+
 	}
 
 	@OnClick({R.id.find_login_PW, R.id.tv_register, R.id.login})
