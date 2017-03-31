@@ -28,12 +28,6 @@ public class LoginModel implements LoginContract.Model {
         if (isInputValid(context, username, password)) {
             IMEUtil.hideIme(context);
             startLogin(username, password);
-//			Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//			intent.putExtra("userName", phone);
-//			startActivity(intent);
-//			recordUserName();
-//			finish();
         }
     }
 

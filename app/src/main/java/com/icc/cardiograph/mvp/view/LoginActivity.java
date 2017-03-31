@@ -150,7 +150,14 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginModel> impl
 	private void login(){
 		phone = phoneEdit.getText().toString().trim();
 		password = passwordEdit.getText().toString().trim();
-		mPresenter.login(this, phone, password);
+//		mPresenter.login(this, phone, password);
+
+		Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		intent.putExtra("userName", phone);
+		startActivity(intent);
+		recordUserName();
+		finish();
 	}
 
 	/**
