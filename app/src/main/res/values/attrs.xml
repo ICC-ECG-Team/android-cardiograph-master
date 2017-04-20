@@ -33,4 +33,9 @@
         <attr name="titleMaxLength" format="integer"/>
     </declare-styleable>
 
+    <!-- 标点转换 -->
+    <declare-styleable name="CBAlignTextView">
+        <attr name="punctuationConvert" format="boolean"/>
+    </declare-styleable>
+
 </resources>

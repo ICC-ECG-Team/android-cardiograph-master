@@ -99,7 +99,7 @@ public class RetrofitUtils {
             httpClientBuilder.addInterceptor(loggerInterceptor);
         }
 
-        if (BuildConfig.PROD_FLAG) {
+        if (!BuildConfig.PROD_FLAG) {
             if (BuildConfig.URL_SERVER.startsWith("https")) {
                 trustAllHosts();
             }

@@ -28,7 +28,7 @@ public class UserApiImpl {
     public void login(String url, String action, String username, String password, Subscriber<LoginEntity> subscriber){
         userApi.login(url, action, username, password)
 //                .map(new CustomResponseHandler<LoginEntity>())
-//                .compose(RxSchedulers.io_main())
+//                .compose(RxSchedulers.io_main());
                 .compose(RetrofitUtils.getInstance().<LoginEntity>applySchedulers())
                 .subscribe(subscriber);
     }
