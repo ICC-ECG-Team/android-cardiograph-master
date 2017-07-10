@@ -56,17 +56,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-/************************************************************
- *  内容摘要	：心电主界面，实现蓝牙连接功能
- *
- *  作者	：叶金新
- *  创建时间	：2014-12-21 下午4:50:01 
- *  当前版本号：v1.0
- *  历史记录	:
- *  	日期	: 2014-12-21 下午4:50:01 	修改人：
- *  	描述	:
- ************************************************************/
 /************************************************************
  *  内容摘要	：<p>
  *
@@ -574,7 +563,9 @@ public class MainActivity extends Activity {
 					mDevice = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(deviceAddress);
 					Log.d(TAG, "... onActivityResultdevice.address==" + mDevice + "mserviceValue" + mService);
 					((TextView) findViewById(R.id.deviceName)).setText(mDevice.getName()+ " - connecting");
-					mService.connect(deviceAddress);
+					if(mService != null){
+						mService.connect(deviceAddress);
+					}
 
 				}
 				break;

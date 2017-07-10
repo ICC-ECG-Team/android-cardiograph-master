@@ -166,7 +166,9 @@ public class UserOnClickListener implements OnClickListener {
 			MainActivity.txValueIndex = 0;
 			break;
 		case R.id.llProfile:
-			MainActivity.mService.disconnect();
+			if(MainActivity.mService!=null){
+				MainActivity.mService.disconnect();
+			}
 			((MainActivity)context).getLst().clear();
 			((MainActivity)context).getLstData().clear();
 			MainActivity.isLoop = false;
